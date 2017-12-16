@@ -2,7 +2,7 @@ package client
 
 import (
 	"fmt"
-	"github.com/benschw/weather-go/openweather/api"
+	"github.com/haibin/weather-go/openweather/api"
 	. "gopkg.in/check.v1"
 	"log"
 	"testing"

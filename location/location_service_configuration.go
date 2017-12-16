@@ -1,7 +1,7 @@
 package location
 
 import (
-	wapi "github.com/benschw/weather-go/openweather/api"
+	wapi "github.com/haibin/weather-go/openweather/api"
 )
 
 type WeatherClient interface {

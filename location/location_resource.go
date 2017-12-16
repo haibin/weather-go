@@ -2,17 +2,18 @@ package location
 
 import (
 	"fmt"
-	"github.com/benschw/opin-go/rest"
-	"github.com/benschw/weather-go/location/api"
-	"github.com/jinzhu/gorm"
 	"log"
 	"net/http"
+
+	"github.com/benschw/opin-go/rest"
+	"github.com/haibin/weather-go/location/api"
+	"github.com/jinzhu/gorm"
 )
 
 var _ = log.Print
 
 type LocationResource struct {
-	Db            gorm.DB
+	Db            *gorm.DB
 	WeatherClient WeatherClient
 }
 

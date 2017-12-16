@@ -2,7 +2,7 @@ package location
 
 import (
 	"fmt"
-	wapi "github.com/benschw/weather-go/openweather/api"
+	wapi "github.com/haibin/weather-go/openweather/api"
 	. "gopkg.in/check.v1"
 	"log"
 	"testing"

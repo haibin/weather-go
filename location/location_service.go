@@ -1,20 +1,21 @@
 package location
 
 import (
-	"github.com/benschw/weather-go/location/api"
-	wclient "github.com/benschw/weather-go/openweather/client"
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/gorilla/mux"
-	"github.com/jinzhu/gorm"
 	"log"
 	"net/http"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/mux"
+	"github.com/haibin/weather-go/location/api"
+	wclient "github.com/haibin/weather-go/openweather/client"
+	"github.com/jinzhu/gorm"
 )
 
 var _ = log.Printf
 
 type LocationService struct {
 	Bind          string
-	Db            gorm.DB
+	Db            *gorm.DB
 	WeatherClient WeatherClient
 }
 
@@ -62,7 +63,7 @@ func (s *LocationService) Run() error {
 	return http.ListenAndServe(s.Bind, nil)
 }
 
-func DbOpen(dbStr string) (gorm.DB, error) {
+func DbOpen(dbStr string) (*gorm.DB, error) {
 	db, err := gorm.Open("mysql", dbStr)
 	if err != nil {
 		return db, err

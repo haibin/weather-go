@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/benschw/opin-go/config"
-	"github.com/benschw/weather-go/location"
+	"github.com/haibin/weather-go/location"
 	"log"
 	"os"
 )
