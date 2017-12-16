@@ -3,10 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/benschw/opin-go/config"
-	"github.com/haibin/weather-go/location"
 	"log"
 	"os"
+
+	"github.com/benschw/opin-go/config"
+	"github.com/haibin/weather-go/location"
 )
 
 func main() {
@@ -46,13 +47,11 @@ func main() {
 	// Run Main App
 	switch cmd {
 	case "serve":
-
 		// Start Server
 		if err := s.Run(); err != nil {
 			log.Fatal(err)
 		}
 	case "migrate-db":
-
 		// Start Server
 		if err := s.MigrateDb(); err != nil {
 			log.Fatal(err)
@@ -61,5 +60,4 @@ func main() {
 		flag.Usage()
 		log.Fatalf("Unknown Command: %s", cmd)
 	}
-
 }

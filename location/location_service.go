@@ -1,7 +1,6 @@
 package location
 
 import (
-	"log"
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -11,8 +10,6 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-var _ = log.Printf
-
 type LocationService struct {
 	Bind          string
 	Db            *gorm.DB
@@ -20,28 +17,24 @@ type LocationService struct {
 }
 
 func NewLocationService(bind string, dbStr string) (*LocationService, error) {
-	s := &LocationService{}
-
 	db, err := DbOpen(dbStr)
 	if err != nil {
-		return s, err
+		return nil, err
 	}
 
-	s.Db = db
-	s.Bind = bind
-	s.WeatherClient = &wclient.WeatherClient{}
-
-	return s, nil
+	return &LocationService{
+		Db:            db,
+		Bind:          bind,
+		WeatherClient: &wclient.WeatherClient{},
+	}, nil
 }
 
 func (s *LocationService) MigrateDb() error {
-
 	s.Db.AutoMigrate(&api.Location{})
 	return nil
 }
 
 func (s *LocationService) Run() error {
-
 	// route handlers
 	resource := &LocationResource{
 		Db:            s.Db,

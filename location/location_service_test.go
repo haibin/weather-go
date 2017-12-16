@@ -2,18 +2,15 @@ package location
 
 import (
 	"fmt"
+	"net/http"
+
 	"github.com/benschw/opin-go/config"
 	"github.com/benschw/opin-go/rando"
 	"github.com/benschw/opin-go/rest"
 	"github.com/haibin/weather-go/location/api"
 	"github.com/haibin/weather-go/location/client"
 	. "gopkg.in/check.v1"
-	"log"
-	"net/http"
 )
-
-var _ = fmt.Print
-var _ = log.Print
 
 type TestSuite struct {
 	s    *LocationService

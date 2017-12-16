@@ -1,15 +1,11 @@
 package client
 
 import (
-	"fmt"
+	"testing"
+
 	"github.com/haibin/weather-go/openweather/api"
 	. "gopkg.in/check.v1"
-	"log"
-	"testing"
 )
-
-var _ = fmt.Print
-var _ = log.Print
 
 func Test(t *testing.T) { TestingT(t) }
 
@@ -24,7 +20,7 @@ func (s *IntTestSuite) TestFind(c *C) {
 	client := WeatherClient{}
 
 	// when
-	cond, err := client.FindForLocation("Austin", "Texas")
+	cond, err := client.FindForLocation("London", "uk")
 
 	// then
 	c.Assert(err, Equals, nil)
@@ -42,7 +38,8 @@ func (s *IntTestSuite) TestFindNotFound(c *C) {
 	cond, err := client.FindForLocation("Foo", "Bar")
 
 	// then
-	c.Assert(err, Equals, nil)
+	// c.Assert(err, Equals, nil)
+	c.Assert(err, Not(Equals), nil)
 
 	c.Assert(cond, DeepEquals, api.Conditions{})
 }

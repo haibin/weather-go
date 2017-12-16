@@ -1,15 +1,11 @@
 package location
 
 import (
-	"fmt"
+	"testing"
+
 	wapi "github.com/haibin/weather-go/openweather/api"
 	. "gopkg.in/check.v1"
-	"log"
-	"testing"
 )
-
-var _ = fmt.Print
-var _ = log.Print
 
 func Test(t *testing.T) { TestingT(t) }
 
